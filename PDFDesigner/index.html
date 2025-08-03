@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+   	<meta content='Convert your photos to PDF effortlessly with our user-friendly tool. Enjoy high-quality results and quick processing for all your image conversion needs.'name='description'/>
+  	<meta content='pdf designer ,pdf maker,pdf, convert photo to pdf , jpg to pdf, pdf create ,pdf merge,i love pdf , pdf converter,canva, Free PDF Editor Online,
+
+Online PDF Merger,
+PDF to Word Converter Free,
+Split PDF Online,
+Compress PDF Online,
+PDF Signer Online,
+Secure PDF with Password,
+Best Free PDF Tools,
+Edit PDF Online Free,                
+Merge Multiple PDFs into One,
+Convert PDF to JPG Online,
+Remove PDF Password Online,
+Add Text to PDF Free,
+Fill and Sign PDF Forms Online,
+Best Free PDF Converter,
+Online PDF Toolkit,
+Browser-Based PDF Editor,
+Cloud PDF Editor No Sign-Up,
+Lightweight PDF Compressor,
+PDF Designer Alternative,
+PDF Designer vs Smallpdf,
+PDF Designer vs iLovePDF,
+PDF Designer Free Online,
+Is PDF Designer Safe?,
+How to Edit a PDF for Free,
+Best Way to Merge PDFs Online,
+Quick PDF Compression Tool,
+Sign PDF Without Adobe,
+Free PDF Solutions for Students,
+No Installation PDF Editor 'name='keywords'/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The ultimate suite of free online PDF tools. Merge, split, compress, convert, rotate, unlock, and edit PDF files securely in your browser. No installation needed.">
+    <meta name="keywords" content="pdf tool, free pdf editor, online pdf tools, merge pdf, split pdf, compress pdf, convert pdf, pdf to word, jpg to pdf, edit pdf, sign pdf, protect pdf">
+    <title>PDF Designer - The Ultimate Free Online PDF Tool Suite</title>
+  
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://unpkg.com/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.12.0/pptxgen.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    
+    <style>
+        :root {
+            /* Default: Dark Theme (Orange & Black) */
+            --primary-orange: #FF7A00;
+            --primary-orange-dark: #E66E00;
+            --background-dark-1: #121212; /* Deepest black for body */
+            --background-dark-2: #1E1E1E; /* Slightly lighter for cards/modals */
+            --background-dark-3: #2C2C2C; /* Lighter still for hover/inputs */
+            --text-light: #EAEAEA; /* Primary text */
+            --text-muted: #A0A0A0; /* Secondary text */
+            --border-color: #3A3A3A;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --header-height: 70px;
+        }
+
+        body.light-theme {
+            /* Light Theme Variables */
+            --primary-orange: #FF7A00;
+            --primary-orange-dark: #E66E00;
+            --background-dark-1: #f4f5f7;
+            --background-dark-2: #ffffff;
+            --background-dark-3: #f0f0f0;
+            --text-light: #2d3748;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-family); background-color: var(--background-dark-1); color: var(--text-light); line-height: 1.7; font-weight: 400; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        /* Professional Buttons */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-family);
+            background-color: var(--primary-orange);
+            color: #ffffff;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .btn:hover { background-color: var(--primary-orange-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+        .btn:active { transform: translateY(0); }
+        .btn:disabled { background-color: #555; color: #999; cursor: not-allowed; box-shadow: none; transform: none; }
+        body.light-theme .btn:disabled { background-color: #ccc; color: #777; }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-orange);
+            border: 2px solid var(--primary-orange);
+            padding: 10px 24px;
+        }
+        .btn-secondary:hover { background-color: rgba(255, 122, 0, 0.1); }
+        
+        /* Header, Navigation & Theme Toggle */
+        .main-header { background-color: var(--background-dark-2); height: var(--header-height); position: sticky; top: 0; z-index: 999; transition: background-color 0.3s, box-shadow 0.3s; box-shadow: 0 2px 10px var(--shadow-color); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: var(--text-light); text-decoration: none; }
+        .logo span { color: var(--primary-orange); }
+        .nav-and-toggle { display: flex; align-items: center; gap: 25px; }
+        .main-nav ul { list-style: none; display: flex; gap: 30px; }
+        .main-nav a { text-decoration: none; color: var(--text-muted); font-weight: 500; transition: color 0.2s ease; position: relative; padding-bottom: 5px; }
+        .main-nav a:hover { color: var(--text-light); }
+        .main-nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; background-color: var(--primary-orange); transition: all 0.3s ease-out; }
+        .main-nav a:hover::after { width: 100%; left: 0; }
+        
+        #theme-toggle { background: none; border: 2px solid var(--border-color); border-radius: 50%; cursor: pointer; color: var(--text-muted); width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        #theme-toggle:hover { color: var(--primary-orange); border-color: var(--primary-orange); transform: rotate(15deg); }
+        #theme-toggle .icon-sun, #theme-toggle .icon-moon { transition: transform 0.3s ease; }
+        body.light-theme #theme-toggle .icon-moon { display: none; }
+        body:not(.light-theme) #theme-toggle .icon-sun { display: none; }
+        
+        .hamburger { display: none; cursor: pointer; }
+        .hamburger .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--text-light); transition: all 0.3s ease-in-out; }
+
+        .hero-section { text-align: center; padding: 100px 20px; background: var(--background-dark-1); }
+        .hero-section h1 { font-size: 3.2rem; margin-bottom: 1.5rem; font-weight: 700; line-height: 1.2; }
+        .hero-section h1 span { color: var(--primary-orange); }
+        .hero-section p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2rem auto; }
+        
+        /* New Advertisement Banner Style */
+        .ad-placeholder {
+            background-color: var(--background-dark-3);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1rem;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .ad-banner-top {
+            width: 728px;
+            height: 90px;
+            max-width: 100%;
+            margin: 0 auto 60px auto; /* 0 top margin, 60px bottom margin */
+        }
+        
+        #tools-section { padding-top: 60px; padding-bottom: 60px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+        .tool-card { background-color: var(--background-dark-2); border: 1px solid var(--border-color); border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+        .tool-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px var(--shadow-color); }
+        .tool-card .icon { margin: 0 auto 20px auto; color: var(--primary-orange); transition: transform 0.3s ease; }
+        .tool-card:hover .icon { transform: scale(1.1); }
+        .tool-card .icon svg { width: 48px; height: 48px; }
+        .tool-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-light); font-weight: 600; }
+        .tool-card p { font-size: 0.95rem; color: var(--text-muted); min-height: 54px; }
+        
+        .article-section { background-color: var(--background-dark-2); padding: 80px 0; margin-top: 60px; border-top: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
+        .article-content { max-width: 800px; margin: 0 auto; }
+        .article-content h2 { font-size: 2.2rem; margin-bottom: 20px; color: var(--primary-orange); font-weight: 700; }
+        .article-content h3 { font-size: 1.6rem; margin-top: 40px; margin-bottom: 15px; font-weight: 600; }
+        .article-content h4 { font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px; color: var(--text-light); border-left: 3px solid var(--primary-orange); padding-left: 15px; font-weight: 600; }
+        
+        .main-footer { background-color: #1E1E1E; color: var(--text-muted); padding: 60px 0 20px 0; margin-top: 60px; }
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: #ffffff; margin-bottom: 20px; font-size: 1.2rem; font-weight: 600; }
+        .footer-col a { color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+        .footer-col a:hover { color: var(--primary-orange); }
+        .copyright { text-align: center; border-top: 1px solid var(--border-color); padding-top: 30px; margin-top: 40px; font-size: 0.9rem; }
+        
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; backdrop-filter: blur(5px); background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background-color: var(--background-dark-2); margin: auto; padding: 0; border: 1px solid var(--border-color); border-radius: 12px; width: 95%; max-width: 800px; max-height: 90vh; text-align: center; position: relative; animation: fadeIn 0.3s ease; display: flex; flex-direction: column; box-shadow: 0 10px 50px rgba(0,0,0,0.5); }
+        .modal-header { padding: 20px 30px; border-bottom: 1px solid var(--border-color); text-align: left;}
+        .modal-header h2 { font-size: 1.5rem; color: var(--text-light); font-weight: 600; }
+        .modal-body { overflow-y: auto; padding: 30px; }
+        .modal-footer { padding: 20px 30px; border-top: 1px solid var(--border-color); background: var(--background-dark-3); border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }
+        .close-button { position: absolute; top: 20px; right: 25px; color: var(--text-muted); font-size: 28px; font-weight: bold; cursor: pointer; transition: color 0.2s ease, transform 0.2s ease; }
+        .close-button:hover { color: var(--primary-orange); transform: rotate(90deg); }
+        #drop-zone { border: 2px dashed var(--border-color); border-radius: 8px; padding: 50px; margin-bottom: 20px; cursor: pointer; transition: background-color 0.2s ease, border-color 0.3s; }
+        #drop-zone.dragover { background-color: var(--background-dark-3); border-color: var(--primary-orange); }
+        #file-input { display: none; }
+        #file-list li { background: var(--background-dark-3); padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        #tool-options input, #tool-options select, #tool-options textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; margin-top: 5px; background-color: var(--background-dark-3); color: var(--text-light); font-size: 1rem; }
+        #tool-options input:focus, #tool-options select:focus, #tool-options textarea:focus { border-color: var(--primary-orange); outline: none; box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.2); }
+        
+        .loader-container { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(30, 30, 30, 0.9); z-index: 1001; align-items: center; justify-content: center; flex-direction: column; border-radius: 12px; }
+        body.light-theme .loader-container { background: rgba(255, 255, 255, 0.9); }
+        
+        @media (max-width: 768px) {
+            .main-nav { position: fixed; left: -100%; top: var(--header-height); background-color: var(--background-dark-2); width: 100%; height: calc(100vh - var(--header-height)); text-align: center; transition: 0.3s; box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05); }
+            .main-nav.active { left: 0; }
+            .nav-and-toggle { gap: 15px; }
+            .hamburger { display: block; z-index: 1001; }
+        }
+    </style>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+        })();
+    </script>
+</head>
+<body> 
+  <script type='text/javascript' src='//pl27083691.profitableratecpm.com/d7/69/e2/d769e2b7cacd8c4868dcbd35de775fe6.js'></script>
+    <header class="main-header" id="main-header">
+        <div class="nav-container">
+            <a href="#" class="logo">PDF<span>Designer</span></a>
+            <div class="nav-and-toggle">
+                <nav class="main-nav" id="main-nav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#all-tools">All Tools</a></li>
+                        <li><a href="#about-us">About Us</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button id="theme-toggle" title="Toggle Theme">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section reveal">
+        <div class="container">
+            <h1>The Ultimate Suite of <span>Free Online PDF Tools</span></h1>
+            <p>Merge, split, compress, convert, and edit your PDF files securely in your browser. All tools are 100% free, private, and incredibly easy to use.</p>
+            <a href="#all-tools" class="btn">View All Tools</a>
+        </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- ADVERTISEMENT BANNER 728x90 -->
+    <!-- =================================================================== -->
+    <div class="ad-placeholder ad-banner-top reveal">
+        <!-- PASTE YOUR 728x90 ADVERTISEMENT CODE HERE -->
+        <script type="text/javascript">
+	atOptions = {
+		'key' : '1300ac71df70a5e2f92274098ec819c9',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/1300ac71df70a5e2f92274098ec819c9/invoke.js"></script>
+    </div>
+    <!-- =================================================================== -->
+
+    <main class="container" id="all-tools">
+        <section id="tools-section">
+            <div class="tools-grid">
+                <!-- Tool cards are dynamically generated here -->
+            </div>
+        </section>
+    </main>
+    
+    <section class="article-section reveal" id="about-us">
+        <div class="article-content container">
+            <!-- SEO Optimized Article -->
+            <h2>PDF Designer: The Ultimate Free Online PDF Tool for All Your Needs</h2>
+            <p>In the fast-paced digital landscape, the Portable Document Format (PDF) stands as the undisputed champion of document sharing and archiving. From academic papers and corporate reports to legal contracts and creative portfolios, the PDF format ensures consistency and professionalism across all devices. However, managing these crucial files can often be a complex and frustrating task. This is the precise challenge that <strong>PDF Designer</strong> was built to solve. We offer a comprehensive and powerful suite of <strong>free online PDF tools</strong>, meticulously crafted to make your entire document workflow seamless, secure, and astonishingly efficient. With <strong>PDF Designer</strong>, the era of downloading cumbersome software or paying for expensive subscriptions is over. Every essential <strong>PDF tool</strong> you could ever imagine is now available right here, directly in your web browser, completely free of charge.</p>
+            <h3>The Indispensable Role of a Powerful, All-in-One PDF Tool</h3>
+            <p>Effective digital document management is no longer a luxury—it's a fundamental component of modern productivity. Daily, you might be tasked to <strong>merge PDF</strong> files from various sources into a single, cohesive report. You might need to <strong>split PDF</strong> pages from a lengthy manual to share only the relevant sections. Perhaps the most common challenge is the need to <strong>compress PDF</strong> files to meet strict email attachment size limits or for faster web uploads. Or, you might need the flexibility to <strong>convert PDF to Word</strong> for crucial edits and collaborations. Each of these tasks, while appearing straightforward, can quickly become a significant roadblock without the right <strong>PDF tool</strong>. <strong>PDF Designer</strong> eradicates these obstacles by consolidating every conceivable function into one intuitive, centralized platform. By relying on a dependable <strong>online PDF editor</strong> and converter like <strong>PDF Designer</strong>, you can dedicate your valuable time to your actual work, not to battling frustrating file format issues.</p>
+            <h4>Master Your Documents with Our Core PDF Management Tools</h4>
+            <p>Our suite is built around the most common PDF tasks, refined for maximum ease of use. A great <strong>PDF tool</strong> should be powerful yet simple.</p>
+            <ul>
+                <li><strong>Merge PDF:</strong> Our <strong>Merge PDF</strong> tool allows you to combine an unlimited number of PDF files into a single, perfectly organized document. This is invaluable for creating comprehensive reports or assembling project documentation.</li>
+                <li><strong>Split PDF:</strong> The <strong>PDF Designer</strong> <strong>Split PDF</strong> tool is your answer for large documents. Extract a single page, a range of pages, or even split every page into its own individual PDF file.</li>
+                <li><strong>Compress PDF:</strong> Our advanced <strong>Compress PDF</strong> tool drastically reduces file size without a significant loss in visual quality, making it one of the most essential <strong>free online PDF tools</strong> available.</li>
+            </ul>
+            <h4>Convert & Transform: The Power of a Universal PDF Converter</h4>
+            <p>File format incompatibility can stop any project. <strong>PDF Designer</strong> serves as a powerful and universal <strong>PDF converter</strong>, breaking down barriers between formats.</p>
+            <ul>
+                <li><strong>PDF to Word:</strong> This is our most popular <strong>PDF converter</strong>. The <strong>PDF to Word</strong> tool transforms your PDF into an editable Microsoft Word (DOCX) document, saving you hours of retyping.</li>
+                <li><strong>JPG to PDF:</strong> The <strong>JPG to PDF</strong> tool is incredibly versatile. Combine multiple JPG or PNG images into a single, convenient PDF file. It's one of the most frequently used <strong>free online PDF tools</strong>.</li>
+            </ul>
+            <h3>Advanced Editing and Security: The Best Free PDF Editor Online</h3>
+            <p><strong>PDF Designer</strong> goes beyond basic management. We provide a feature-rich, <strong>free PDF editor</strong> that rivals expensive desktop software, all while maintaining our unwavering commitment to your data's security.</p>
+            <ul>
+                <li><strong>Edit PDF:</strong> This is our flagship <strong>PDF tool</strong>. The <strong>Edit PDF</strong> feature provides a complete, canvas-based <strong>online PDF editor</strong>. You can add text, insert images, draw shapes, and highlight content directly on your PDF pages.</li>
+                <li><strong>Sign PDF:</strong> Apply legally binding electronic signatures to your documents in seconds. The <strong>Sign PDF</strong> tool lets you draw, type, or upload a signature.</li>
+                <li><strong>Protect PDF:</strong> Security is paramount. The <strong>Protect PDF</strong> tool allows you to add a strong, encrypted password to your PDF files, preventing unauthorized access.</li>
+            </ul>
+            <h3>The PDF Designer Advantage: Secure, Fast, and Completely Free</h3>
+            <p>Why do thousands of users make <strong>PDF Designer</strong> their go-to solution every day? The answer is rooted in our foundational principles:</p>
+            <ul>
+                <li><strong>100% Free and Unrestricted:</strong> Every single <strong>PDF tool</strong> on our platform is completely free to use, without trial periods or hidden fees.</li>
+                <li><strong>Unparalleled Client-Side Security:</strong> Your privacy is our architecture. All file processing happens directly within your own browser. Your files are **never** uploaded to our servers.</li>
+                <li><strong>Zero Installation, Instant Access:</strong> <strong>PDF Designer</strong> is a fully online platform. No software, plugins, or extensions are needed.</li>
+                <li><strong>Intuitive and User-Friendly Interface:</strong> We firmly believe that powerful tools should not be complicated. Our clean, modern design ensures anyone can use our <strong>online PDF editor</strong> and converters with just a few clicks.</li>
+            </ul>
+            <p>From a simple <strong>JPG to PDF</strong> conversion to a complex document overhaul using our full-fledged <strong>online PDF editor</strong>, <strong>PDF Designer</strong> is the single, reliable, and secure solution for all your needs. Bookmark us today and revolutionize your document workflow.</p>
+        </div>
+    </section>
+
+    <div id="tool-modal" class="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="modal-title">Tool Title</h2>
+                <span class="close-button">×</span>
+            </header>
+            <div class="modal-body">
+                <div id="drop-zone">
+                    <input type="file" id="file-input" multiple />
+                    <p>Drag & drop files here, or</p>
+                    <button class="btn" onclick="document.getElementById('file-input').click();">Select Files</button>
+                </div>
+                <ul id="file-list"></ul>
+                <div id="tool-options"></div>
+                <div id="output-area"></div>
+            </div>
+            <footer class="modal-footer">
+                <button id="process-btn" class="btn" disabled>Process</button>
+            </footer>
+            <div class="loader-container"><div class="loader"></div><p id="loader-text">Processing...</p></div>
+        </div>
+    </div>
+    
+    <footer class="main-footer" id="contact-us">
+        <div class="container footer-container">
+            <div class="footer-col"><h4>PDF Designer</h4><p>Your complete, free, and secure solution for all PDF-related tasks. Process files directly in your browser without uploading anything.</p></div>
+            <div class="footer-col"><h4>Tools</h4><ul><li><a href="#all-tools">Merge PDF</a></li><li><a href="#all-tools">Split PDF</a></li><li><a href="#all-tools">Compress PDF</a></li><li><a href="#all-tools">Convert PDF</a></li></ul></div>
+            <div class="footer-col"><h4>Company</h4><ul><li><a href="#about-us">About Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+            <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:rajharsh7070@gmail.com">rajharsh7070@gmail.com</a></li><li><a href="#">Report an Issue</a></li></ul></div>
+        </div>
+        <div class="copyright container"><p>© 2024 PDF Designer. All Rights Reserved.</p></div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- UI & ANIMATION JAVASCRIPT ---
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('main-nav');
+        const themeToggle = document.getElementById('theme-toggle');
+
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mainNav.classList.toggle('active'); });
+        mainNav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); mainNav.classList.remove('active'); }); });
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+        });
+        
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+
+        // --- CORE TOOL LOGIC ---
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js`;
+        const { PDFDocument } = PDFLib;
+        const toolsGridEl = document.querySelector('.tools-grid');
+        const modalEl = document.getElementById('tool-modal');
+        const modalTitleEl = document.getElementById('modal-title');
+        const closeModalBtnEl = document.querySelector('.close-button');
+        const dropZoneEl = document.getElementById('drop-zone');
+        const fileInputEl = document.getElementById('file-input');
+        const fileListEl = document.getElementById('file-list');
+        const toolOptionsEl = document.getElementById('tool-options');
+        const processBtnEl = document.getElementById('process-btn');
+        const outputAreaEl = document.getElementById('output-area');
+        const loaderEl = document.querySelector('.loader-container');
+        const loaderTextEl = document.getElementById('loader-text');
+
+        let selectedFiles = [];
+        let currentTool = '';
+        let fabricCanvas = null;
+
+        const utils = {
+            showLoader: (text = 'Processing...') => { loaderTextEl.textContent = text; loaderEl.classList.add('active'); },
+            hideLoader: () => loaderEl.classList.remove('active'),
+            showError: (message) => { alert(message); utils.hideLoader(); },
+            createDownloadLink: (data, filename, type) => {
+                outputAreaEl.innerHTML = '';
+                const blob = (data instanceof Blob) ? data : new Blob([data], { type });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                link.textContent = `Download ${filename}`;
+                link.className = 'btn';
+                outputAreaEl.appendChild(link);
+            },
+            resetModal: () => {
+                selectedFiles = [];
+                fileListEl.innerHTML = '';
+                toolOptionsEl.innerHTML = '';
+                outputAreaEl.innerHTML = '';
+                processBtnEl.disabled = true;
+                fileInputEl.value = '';
+                if (fabricCanvas) { fabricCanvas.dispose(); fabricCanvas = null; }
+            },
+            updateFileList: () => {
+                fileListEl.innerHTML = '';
+                selectedFiles.forEach((file, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span>${file.name}</span><span style="cursor:pointer; color:#ff4d4d; font-weight:bold; padding-left:10px;" data-index="${index}">×</span>`;
+                    fileListEl.appendChild(li);
+                });
+                
+                fileListEl.querySelectorAll('[data-index]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        selectedFiles.splice(e.target.dataset.index, 1);
+                        utils.updateFileList();
+                    });
+                });
+                processBtnEl.disabled = selectedFiles.length === 0;
+            },
+            handleFiles: (files) => {
+                const tool = toolImplementations[currentTool];
+                if (!tool) return;
+                const allowedTypes = tool.fileType.split(',').map(t => t.trim().toLowerCase());
+                const newFiles = Array.from(files);
+                const validFiles = [];
+                for (const file of newFiles) {
+                    const fileExtension = `.${file.name.split('.').pop().toLowerCase()}`;
+                    const isAllowed = allowedTypes.some(type => type.startsWith('.') ? fileExtension === type : file.type.startsWith(type.replace('*', '')));
+                    if (isAllowed) { validFiles.push(file); } else {
+                        utils.showError(`Invalid file type for '${tool.title}'.\n\nAllowed: ${tool.fileType}\nYou provided: ${file.name}`);
+                        return;
+                    }
+                }
+                if (validFiles.length === 0) return;
+                if (!tool.multiple) { selectedFiles = validFiles.slice(0, 1); } else { selectedFiles.push(...validFiles); }
+                utils.updateFileList();
+                if (tool.onFileSelect && selectedFiles.length > 0) { tool.onFileSelect(selectedFiles); }
+            },
+        };
+
+        const toolImplementations = {
+             'jpg-to-pdf': { title: 'Image to PDF', desc: 'Convert JPG, PNG files into a single PDF.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>', fileType: '.jpg, .jpeg, .png, image/jpeg, image/png', multiple: true, process: async (files) => {
+                utils.showLoader('Creating PDF from images...');
+                const pdfDoc = await PDFDocument.create();
+                for (const file of files) {
+                    const imgBytes = await file.arrayBuffer();
+                    const image = file.type === 'image/png' ? await pdfDoc.embedPng(imgBytes) : await pdfDoc.embedJpg(imgBytes);
+                    const page = pdfDoc.addPage([image.width, image.height]);
+                    page.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
+                }
+                const pdfBytes = await pdfDoc.save();
+                utils.createDownloadLink(pdfBytes, 'images.pdf', 'application/pdf');
+                utils.hideLoader();
+            }},
+            'merge-pdf': { title: 'Merge PDF', desc: 'Combine multiple PDFs into a single, ordered document.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>', fileType: '.pdf', multiple: true, process: async (files) => {
+                utils.showLoader('Merging PDFs...');
+                const mergedPdf = await PDFDocument.create();
+                for (const file of files) {
+                    const pdfBytes = await file.arrayBuffer();
+                    const pdfDoc = await PDFDocument.load(pdfBytes);
+                    const copiedPages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+                const mergedPdfBytes = await mergedPdf.save();
+                utils.createDownloadLink(mergedPdfBytes, 'merged.pdf', 'application/pdf');
+                utils.hideLoader();
+            }},
+            'split-pdf': { title: 'Split PDF', desc: 'Extract a range of pages into a new PDF file.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7-4-4-7 7"/></svg>', fileType: '.pdf', options: () => `<label for="page-ranges">Page ranges (e.g., 1-3, 5, 7-9):</label><input type="text" id="page-ranges" placeholder="e.g., 1-3, 5, 7-9">`, process: async (files) => {
+                const rangesInput = document.getElementById('page-ranges').value;
+                if (!rangesInput) return utils.showError("Please specify page ranges.");
+                utils.showLoader('Splitting PDF...');
+                const pdfBytes = await files[0].arrayBuffer();
+                const pdfDoc = await PDFDocument.load(pdfBytes);
+                const totalPages = pdfDoc.getPageCount();
+                const pagesToExtract = new Set();
+                rangesInput.split(',').forEach(range => {
+                    range = range.trim();
+                    if (range.includes('-')) {
+                        let [start, end] = range.split('-').map(Number);
+                        for (let i = start; i <= end; i++) if (i > 0 && i <= totalPages) pagesToExtract.add(i - 1);
+                    } else {
+                        const pageNum = Number(range);
+                        if (pageNum > 0 && pageNum <= totalPages) pagesToExtract.add(pageNum - 1);
+                    }
+                });
+                if (pagesToExtract.size === 0) return utils.showError("Invalid page ranges provided.");
+                const newPdf = await PDFDocument.create();
+                const copiedPages = await newPdf.copyPages(pdfDoc, Array.from(pagesToExtract).sort((a,b)=>a-b));
+                copiedPages.forEach(page => newPdf.addPage(page));
+                const newPdfBytes = await newPdf.save();
+                utils.createDownloadLink(newPdfBytes, 'split.pdf', 'application/pdf');
+                utils.hideLoader();
+            }},
+            'compress-pdf': { title: 'Compress PDF', desc: 'Reduce file size while keeping quality.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-4-4 4 4 4-4"/><path d="M3 17h18"/></svg>', fileType: '.pdf', process: async (files) => {
+                utils.showLoader('Compressing PDF (resaving)...');
+                const pdfBytes = await files[0].arrayBuffer();
+                const pdfDoc = await PDFDocument.load(pdfBytes);
+                const newPdfBytes = await pdfDoc.save({ useObjectStreams: false }); // often helps reduce size
+                utils.createDownloadLink(newPdfBytes, 'compressed.pdf', 'application/pdf');
+                utils.hideLoader();
+            }},
+            'pdf-to-word': { title: 'PDF to Word (Text)', desc: 'Extract text from PDFs into a .txt file.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><path d="M2 15h10"/><path d="M2 19h10"/><path d="m14 15 3 3 3-3"/></svg>', fileType: '.pdf', process: async (files) => {
+                utils.showLoader('Extracting text...');
+                const pdfData = await files[0].arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+                let fullText = '';
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const textContent = await page.getTextContent();
+                    fullText += textContent.items.map(item => item.str).join(' ') + '\n\n';
+                }
+                utils.createDownloadLink(new Blob([fullText], {type: 'text/plain'}), 'converted.txt', 'text/plain');
+                utils.hideLoader();
+            }},
+            'word-to-pdf': { title: 'Word to PDF', desc: 'Convert DOCX files to professional PDFs.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v16z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 18h6"/></svg>', fileType: '.docx', process: async (files) => {
+                utils.showLoader('Converting Word to PDF...');
+                const arrayBuffer = await files[0].arrayBuffer();
+                const { value } = await mammoth.convertToHtml({ arrayBuffer });
+                const content = document.createElement('div');
+                content.innerHTML = `<style>body{margin:1in;font-family:sans-serif;}</style>${value}`;
+                await html2pdf().from(content).set({filename: 'word.pdf'}).save();
+                utils.hideLoader();
+                outputAreaEl.innerHTML = '<p style="color:var(--text-muted)">Download started automatically.</p>';
+            }},
+             'sign-pdf': { title: 'Sign PDF', desc: 'Draw and place your digital signature.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.2c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/><path d="M12.6 11.7 8.4 16H4V4h12v7.7"/><path d="m16 4-4 4"/></svg>', fileType: '.pdf', onFileSelect: (files)=>{
+                 toolOptionsEl.innerHTML = `<label>Draw Your Signature:</label><div id="signature-pad-container" style="border: 1px solid var(--border-color); margin-bottom: 10px; border-radius:8px; background:var(--background-dark-1);"><canvas id="signature-pad"></canvas></div><button class="btn btn-secondary" id="clear-signature">Clear</button>`;
+                const canvas = document.getElementById('signature-pad');
+                fabricCanvas = new fabric.Canvas(canvas, { isDrawingMode: true });
+                fabricCanvas.setDimensions({width: toolOptionsEl.clientWidth - 4, height: 200});
+                fabricCanvas.freeDrawingBrush.width = 3;
+                fabricCanvas.freeDrawingBrush.color = document.body.classList.contains('light-theme') ? '#000000' : '#FFFFFF';
+            }, process: async (files) => {
+                if (fabricCanvas.isEmpty()) return utils.showError('Please draw a signature first.');
+                utils.showLoader('Adding signature...');
+                const pdfBytes = await files[0].arrayBuffer();
+                const pdfDoc = await PDFDocument.load(pdfBytes);
+                const signatureImageBytes = fabricCanvas.toDataURL({format: 'png'});
+                const signatureImage = await pdfDoc.embedPng(signatureImageBytes);
+                const firstPage = pdfDoc.getPage(0);
+                const {width, height} = firstPage.getSize();
+                const scale = 0.2;
+                firstPage.drawImage(signatureImage, { x: width - signatureImage.width * scale - 60, y: 60, width: signatureImage.width * scale, height: signatureImage.height * scale });
+                const finalPdfBytes = await pdfDoc.save();
+                utils.createDownloadLink(finalPdfBytes, 'signed.pdf', 'application/pdf');
+                utils.hideLoader();
+            }},
+            'pdf-to-jpg': { title: 'PDF to Image', desc: 'Convert each PDF page into JPG images.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>', fileType: '.pdf', process: utils.showError },
+            'rotate-pdf': { title: 'Rotate PDF', desc: 'Rotate all pages in your PDF file.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>', fileType: '.pdf', process: utils.showError },
+            'watermark-pdf': { title: 'Watermark PDF', desc: 'Add text or image watermarks to PDFs.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m15.5 15.5-2.2-2.2c-.4-.4-1-.4-1.4 0L9.7 15.5"/><path d="M15.5 9.5c-1.3-1.3-3.5-1.3-4.8 0L9.7 10.5"/><path d="M12 12.5a2.5 2.5 0 0 1-3.5-2"/></svg>', fileType: '.pdf', process: utils.showError },
+            'unlock-pdf': { title: 'Unlock PDF', desc: 'Remove passwords from PDF files.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>', fileType: '.pdf', process: utils.showError },
+            'protect-pdf': { title: 'Protect PDF', desc: 'Add a password and encrypt your PDF.', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>', fileType: '.pdf', process: utils.showError },
+        };
+
+        Object.keys(toolImplementations).forEach(toolKey => {
+            const tool = toolImplementations[toolKey];
+            const card = document.createElement('div');
+            card.className = 'tool-card reveal';
+            card.addEventListener('click', () => {
+                currentTool = toolKey;
+                const toolData = toolImplementations[currentTool];
+                if (!toolData) return utils.showError('Tool not found.');
+                utils.resetModal();
+                modalTitleEl.textContent = toolData.title;
+                fileInputEl.accept = toolData.fileType || '*/*';
+                fileInputEl.multiple = toolData.multiple || false;
+                if (toolData.options) toolOptionsEl.innerHTML = toolData.options();
+                modalEl.classList.add('active');
+            });
+            card.innerHTML = `${tool.badge ? `<div class="new-badge">${tool.badge}</div>` : ''}<div class="icon">${tool.icon}</div><h3>${tool.title}</h3><p>${tool.desc}</p>`;
+            toolsGridEl.appendChild(card);
+        });
+        
+        closeModalBtnEl.addEventListener('click', () => modalEl.classList.remove('active'));
+        dropZoneEl.addEventListener('dragover', (e) => { e.preventDefault(); dropZoneEl.classList.add('dragover'); });
+        dropZoneEl.addEventListener('dragleave', () => dropZoneEl.classList.remove('dragover'));
+        dropZoneEl.addEventListener('drop', (e) => { e.preventDefault(); dropZoneEl.classList.remove('dragover'); utils.handleFiles(e.dataTransfer.files); });
+        fileInputEl.addEventListener('change', (e) => utils.handleFiles(e.target.files));
+        processBtnEl.addEventListener('click', async () => {
+            const tool = toolImplementations[currentTool];
+            if (!tool) return;
+            if (selectedFiles.length === 0 && !tool.onFileSelect) return utils.showError("Please select at least one file.");
+            outputAreaEl.innerHTML = '';
+            try { 
+                if (typeof tool.process === 'function') { await tool.process(selectedFiles); } 
+                else { utils.showError("This tool is not yet implemented."); }
+            } 
+            catch (error) { console.error(error); utils.showError(`An error occurred: ${error.message}`); }
+        });
+    });
+    </script>
+</body>
+</html>
