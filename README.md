@@ -1,6 +1,4 @@
-Here is a **more attractive GitHub-style professional README.md** for **PDFDesigner** with badges, better structure, and sections suitable for a **portfolio or GitHub project**.
 
----
 
 # 📄 PDFDesigner
 
